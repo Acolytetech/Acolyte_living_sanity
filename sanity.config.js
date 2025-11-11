@@ -1,0 +1,245 @@
+import {defineConfig} from 'sanity'
+import {structureTool} from 'sanity/structure'
+import {visionTool} from '@sanity/vision'
+import {schemaTypes} from './schemas'
+import {seoMetaFields} from 'sanity-plugin-seo'
+import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
+import {cloudinaryAssetSourcePlugin} from 'sanity-plugin-cloudinary'
+import deskStructure from './schemas/deskStructure'
+import {simplerColorInput} from 'sanity-plugin-simpler-color-input'
+
+export default defineConfig({
+  name: import.meta.env.SANITY_STUDIO_NAME,
+  title: import.meta.env.SANITY_STUDIO_TITLE,
+
+  projectId: import.meta.env.SANITY_STUDIO_PROJECTID,
+  dataset: import.meta.env.SANITY_STUDIO_DATASET,
+
+  plugins: [
+    structureTool({structure: deskStructure}),
+    visionTool(),
+    seoMetaFields(),
+    simplerColorInput({
+      // Note: These are all optional
+      defaultColorFormat: 'rgba',
+      defaultColorList: [
+        {label: 'red-50', value: '#ffebee'},
+        {label: 'red-100', value: '#ffcdd2'},
+        {label: 'red-200', value: '#ef9a9a'},
+        {label: 'red-300', value: '#e57373'},
+        {label: 'red-400', value: '#ef5350'},
+        {label: 'red-500', value: '#f44336'},
+        {label: 'red-600', value: '#e53935'},
+        {label: 'red-700', value: '#d32f2f'},
+        {label: 'red-800', value: '#c62828'},
+        {label: 'red-900', value: '#b71c1c'},
+
+        {label: 'pink-50', value: '#fce4ec'},
+        {label: 'pink-100', value: '#f8bbd0'},
+        {label: 'pink-200', value: '#f48fb1'},
+        {label: 'pink-300', value: '#f06292'},
+        {label: 'pink-400', value: '#ec407a'},
+        {label: 'pink-500', value: '#e91e63'},
+        {label: 'pink-600', value: '#d81b60'},
+        {label: 'pink-700', value: '#c2185b'},
+        {label: 'pink-800', value: '#ad1457'},
+        {label: 'pink-900', value: '#880e4f'},
+
+        {label: 'purple-50', value: '#f3e5f5'},
+        {label: 'purple-100', value: '#e1bee7'},
+        {label: 'purple-200', value: '#ce93d8'},
+        {label: 'purple-300', value: '#ba68c8'},
+        {label: 'purple-400', value: '#ab47bc'},
+        {label: 'purple-500', value: '#9c27b0'},
+        {label: 'purple-600', value: '#8e24aa'},
+        {label: 'purple-700', value: '#7b1fa2'},
+        {label: 'purple-800', value: '#6a1b9a'},
+        {label: 'purple-900', value: '#4a148c'},
+
+        {label: 'deepPurple-50', value: '#ede7f6'},
+        {label: 'deepPurple-100', value: '#d1c4e9'},
+        {label: 'deepPurple-200', value: '#b39ddb'},
+        {label: 'deepPurple-300', value: '#9575cd'},
+        {label: 'deepPurple-400', value: '#7e57c2'},
+        {label: 'deepPurple-500', value: '#673ab7'},
+        {label: 'deepPurple-600', value: '#5e35b1'},
+        {label: 'deepPurple-700', value: '#512da8'},
+        {label: 'deepPurple-800', value: '#4527a0'},
+        {label: 'deepPurple-900', value: '#311b92'},
+
+        {label: 'indigo-50', value: '#e8eaf6'},
+        {label: 'indigo-100', value: '#c5cae9'},
+        {label: 'indigo-200', value: '#9fa8da'},
+        {label: 'indigo-300', value: '#7986cb'},
+        {label: 'indigo-400', value: '#5c6bc0'},
+        {label: 'indigo-500', value: '#3f51b5'},
+        {label: 'indigo-600', value: '#3949ab'},
+        {label: 'indigo-700', value: '#303f9f'},
+        {label: 'indigo-800', value: '#283593'},
+        {label: 'indigo-900', value: '#1a237e'},
+
+        {label: 'blue-50', value: '#e3f2fd'},
+        {label: 'blue-100', value: '#bbdefb'},
+        {label: 'blue-200', value: '#90caf9'},
+        {label: 'blue-300', value: '#64b5f6'},
+        {label: 'blue-400', value: '#42a5f5'},
+        {label: 'blue-500', value: '#2196f3'},
+        {label: 'blue-600', value: '#1e88e5'},
+        {label: 'blue-700', value: '#1976d2'},
+        {label: 'blue-800', value: '#1565c0'},
+        {label: 'blue-900', value: '#0d47a1'},
+
+        {label: 'green-50', value: '#e8f5e9'},
+        {label: 'green-100', value: '#c8e6c9'},
+        {label: 'green-200', value: '#a5d6a7'},
+        {label: 'green-300', value: '#81c784'},
+        {label: 'green-400', value: '#66bb6a'},
+        {label: 'green-500', value: '#4caf50'},
+        {label: 'green-600', value: '#43a047'},
+        {label: 'green-700', value: '#388e3c'},
+        {label: 'green-800', value: '#2e7d32'},
+        {label: 'green-900', value: '#1b5e20'},
+
+        {label: 'grey-50', value: '#fafafa'},
+        {label: 'grey-100', value: '#f5f5f5'},
+        {label: 'grey-200', value: '#eeeeee'},
+        {label: 'grey-300', value: '#e0e0e0'},
+        {label: 'grey-400', value: '#bdbdbd'},
+        {label: 'grey-500', value: '#9e9e9e'},
+        {label: 'grey-600', value: '#757575'},
+        {label: 'grey-700', value: '#616161'},
+        {label: 'grey-800', value: '#424242'},
+        {label: 'grey-900', value: '#212121'},
+
+        // CYAN
+        {label: 'cyan-50', value: '#e0f7fa'},
+        {label: 'cyan-100', value: '#b2ebf2'},
+        {label: 'cyan-200', value: '#80deea'},
+        {label: 'cyan-300', value: '#4dd0e1'},
+        {label: 'cyan-400', value: '#26c6da'},
+        {label: 'cyan-500', value: '#00bcd4'},
+        {label: 'cyan-600', value: '#00acc1'},
+        {label: 'cyan-700', value: '#0097a7'},
+        {label: 'cyan-800', value: '#00838f'},
+        {label: 'cyan-900', value: '#006064'},
+
+        // TEAL
+        {label: 'teal-50', value: '#e0f2f1'},
+        {label: 'teal-100', value: '#b2dfdb'},
+        {label: 'teal-200', value: '#80cbc4'},
+        {label: 'teal-300', value: '#4db6ac'},
+        {label: 'teal-400', value: '#26a69a'},
+        {label: 'teal-500', value: '#009688'},
+        {label: 'teal-600', value: '#00897b'},
+        {label: 'teal-700', value: '#00796b'},
+        {label: 'teal-800', value: '#00695c'},
+        {label: 'teal-900', value: '#004d40'},
+
+        // AMBER
+        {label: 'amber-50', value: '#fff8e1'},
+        {label: 'amber-100', value: '#ffecb3'},
+        {label: 'amber-200', value: '#ffe082'},
+        {label: 'amber-300', value: '#ffd54f'},
+        {label: 'amber-400', value: '#ffca28'},
+        {label: 'amber-500', value: '#ffc107'},
+        {label: 'amber-600', value: '#ffb300'},
+        {label: 'amber-700', value: '#ffa000'},
+        {label: 'amber-800', value: '#ff8f00'},
+        {label: 'amber-900', value: '#ff6f00'},
+
+        // ORANGE
+        {label: 'orange-50', value: '#fff3e0'},
+        {label: 'orange-100', value: '#ffe0b2'},
+        {label: 'orange-200', value: '#ffcc80'},
+        {label: 'orange-300', value: '#ffb74d'},
+        {label: 'orange-400', value: '#ffa726'},
+        {label: 'orange-500', value: '#ff9800'},
+        {label: 'orange-600', value: '#fb8c00'},
+        {label: 'orange-700', value: '#f57c00'},
+        {label: 'orange-800', value: '#ef6c00'},
+        {label: 'orange-900', value: '#e65100'},
+
+        // DEEP ORANGE
+        {label: 'deepOrange-50', value: '#fbe9e7'},
+        {label: 'deepOrange-100', value: '#ffccbc'},
+        {label: 'deepOrange-200', value: '#ffab91'},
+        {label: 'deepOrange-300', value: '#ff8a65'},
+        {label: 'deepOrange-400', value: '#ff7043'},
+        {label: 'deepOrange-500', value: '#ff5722'},
+        {label: 'deepOrange-600', value: '#f4511e'},
+        {label: 'deepOrange-700', value: '#e64a19'},
+        {label: 'deepOrange-800', value: '#d84315'},
+        {label: 'deepOrange-900', value: '#bf360c'},
+
+        // LIME
+        {label: 'lime-50', value: '#f9fbe7'},
+        {label: 'lime-100', value: '#f0f4c3'},
+        {label: 'lime-200', value: '#e6ee9c'},
+        {label: 'lime-300', value: '#dce775'},
+        {label: 'lime-400', value: '#d4e157'},
+        {label: 'lime-500', value: '#cddc39'},
+        {label: 'lime-600', value: '#c0ca33'},
+        {label: 'lime-700', value: '#afb42b'},
+        {label: 'lime-800', value: '#9e9d24'},
+        {label: 'lime-900', value: '#827717'},
+
+        // LIGHT GREEN
+        {label: 'lightGreen-50', value: '#f1f8e9'},
+        {label: 'lightGreen-100', value: '#dcedc8'},
+        {label: 'lightGreen-200', value: '#c5e1a5'},
+        {label: 'lightGreen-300', value: '#aed581'},
+        {label: 'lightGreen-400', value: '#9ccc65'},
+        {label: 'lightGreen-500', value: '#8bc34a'},
+        {label: 'lightGreen-600', value: '#7cb342'},
+        {label: 'lightGreen-700', value: '#689f38'},
+        {label: 'lightGreen-800', value: '#558b2f'},
+        {label: 'lightGreen-900', value: '#33691e'},
+
+        // LIGHT BLUE
+        {label: 'lightBlue-50', value: '#e1f5fe'},
+        {label: 'lightBlue-100', value: '#b3e5fc'},
+        {label: 'lightBlue-200', value: '#81d4fa'},
+        {label: 'lightBlue-300', value: '#4fc3f7'},
+        {label: 'lightBlue-400', value: '#29b6f6'},
+        {label: 'lightBlue-500', value: '#03a9f4'},
+        {label: 'lightBlue-600', value: '#039be5'},
+        {label: 'lightBlue-700', value: '#0288d1'},
+        {label: 'lightBlue-800', value: '#0277bd'},
+        {label: 'lightBlue-900', value: '#01579b'},
+
+        // BLUE GREY
+        {label: 'blueGrey-50', value: '#eceff1'},
+        {label: 'blueGrey-100', value: '#cfd8dc'},
+        {label: 'blueGrey-200', value: '#b0bec5'},
+        {label: 'blueGrey-300', value: '#90a4ae'},
+        {label: 'blueGrey-400', value: '#78909c'},
+        {label: 'blueGrey-500', value: '#607d8b'},
+        {label: 'blueGrey-600', value: '#546e7a'},
+        {label: 'blueGrey-700', value: '#455a64'},
+        {label: 'blueGrey-800', value: '#37474f'},
+        {label: 'blueGrey-900', value: '#263238'},
+
+        // BROWN
+        {label: 'brown-50', value: '#efebe9'},
+        {label: 'brown-100', value: '#d7ccc8'},
+        {label: 'brown-200', value: '#bcaaa4'},
+        {label: 'brown-300', value: '#a1887f'},
+        {label: 'brown-400', value: '#8d6e63'},
+        {label: 'brown-500', value: '#795548'},
+        {label: 'brown-600', value: '#6d4c41'},
+        {label: 'brown-700', value: '#5d4037'},
+        {label: 'brown-800', value: '#4e342e'},
+        {label: 'brown-900', value: '#3e2723'},
+      ],
+      enableSearch: true,
+      showColorValue: true,
+    }),
+    // unsplashImageAsset(),
+    // cloudinaryAssetSourcePlugin(),
+  ],
+
+  schema: {
+    types: schemaTypes,
+  },
+})
+
